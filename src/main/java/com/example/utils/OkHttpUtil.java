@@ -15,7 +15,7 @@ public class OkHttpUtil {
     /**
      * get同步请求
      *
-     * @param url 请求的url
+     * @param url 请求url
      * @return 返回的字符串
      * @throws IOException 网络请求异常
      */
@@ -26,10 +26,12 @@ public class OkHttpUtil {
     }
 
     /**
-     * post请求，json数据为body
+     * post同步请求
      *
-     * @param url  请求路径
-     * @param json 请求body（json）
+     * @param url  请求url
+     * @param json 请求body(json)
+     * @return 返回的字符串
+     * @throws IOException 网络请求异常
      */
     public static String post(String url, String json) throws IOException {
 
@@ -44,7 +46,6 @@ public class OkHttpUtil {
      * 异步get请求
      *
      * @param url 请求url
-     * @return 响应的json字符串
      */
     public static void asynchronousGet(String url) {
         Request request = new Request.Builder().url(url).build();
@@ -64,7 +65,8 @@ public class OkHttpUtil {
 
     /**
      * 异步post
-     * @param url 请求url
+     *
+     * @param url  请求url
      * @param json 请求body(json)
      */
     public static void asynchronousPost(String url, String json) {
