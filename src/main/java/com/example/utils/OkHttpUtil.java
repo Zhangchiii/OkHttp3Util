@@ -47,20 +47,9 @@ public class OkHttpUtil {
      *
      * @param url 请求url
      */
-    public static void asynchronousGet(String url) {
+    public static void asynchronousGet(String url, Callback callback) {
         Request request = new Request.Builder().url(url).build();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("获取结果失败");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String result = response.body().string();
-                System.out.println(result);
-            }
-        });
+        okHttpClient.newCall(request).enqueue(callback);
     }
 
     /**
@@ -69,20 +58,9 @@ public class OkHttpUtil {
      * @param url  请求url
      * @param json 请求body(json)
      */
-    public static void asynchronousPost(String url, String json) {
+    public static void asynchronousPost(String url, String json, Callback callback) {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder().url(url).post(body).build();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("获取结果失败");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String result = response.body().string();
-                System.out.println(result);
-            }
-        });
+        okHttpClient.newCall(request).enqueue(callback);
     }
 }
