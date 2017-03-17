@@ -3,6 +3,7 @@ package com.example.utils;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by itxuye on 2017/3/17.
@@ -10,7 +11,10 @@ import java.io.IOException;
 public class OkHttpLoader implements HttpWrapper {
 
     private final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private final OkHttpClient okHttpClient = new OkHttpClient();
+    private final OkHttpClient okHttpClient = new OkHttpClient
+            .Builder()
+            .readTimeout(300, TimeUnit.SECONDS)
+            .build();
 
     OkHttpLoader() {
 
