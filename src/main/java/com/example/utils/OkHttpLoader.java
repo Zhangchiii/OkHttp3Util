@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * okhttp
  * Created by itxuye on 2017/3/17.
  */
 public class OkHttpLoader implements HttpWrapper {
